@@ -24,6 +24,9 @@ RUN composer install --no-dev --optimize-autoloader
 
 # Memberi akses folder storage agar bisa ditulis (untuk upload/cache)
 RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
+# Tambahkan 2 baris ini untuk menyiapkan database SQLite
+RUN touch database/database.sqlite
+RUN chown -R www-data:www-data database/database.sqlite
 
 # Menjalankan aplikasi
 EXPOSE 8080
